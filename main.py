@@ -1,7 +1,8 @@
 from fastapi import FastAPI
-import pandas as pd
 from recommender import load_data, build_features, recommend
 from pydantic import BaseModel
+from fastapi.middleware.cors import CORSMiddleware
+
 
 df = load_data()
 X = build_features(df)
@@ -11,6 +12,13 @@ class RecommendRequest(BaseModel):
     n: int = 10
 
 app = FastAPI()
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["http://localhost:5173"],
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 
 
