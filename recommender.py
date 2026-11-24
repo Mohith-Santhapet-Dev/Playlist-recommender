@@ -10,7 +10,7 @@ def load_data(path = "spotify_songs.csv"):
     df = pd.read_csv(path)
     df = df.drop_duplicates(subset="track_id")
     df = df.sort_values(by="track_popularity", ascending=False)
-    df = df.drop_duplicates(subset=["track_name", "track_author"])
+    df = df.drop_duplicates(subset=["track_name", "track_artist"])
     df = df.reset_index(drop=True)
     return df
     
