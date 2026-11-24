@@ -38,7 +38,7 @@ def recommend(df, X, playlist_idx, n= 10):
     filtered = [i for i in order if i not in playlist_idx][:n]
 
     result = df.iloc[filtered][["track_name", "track_artist",
-                                "playlist_genre", "playlist_subgenre"]].copy()
+                                "playlist_genre", "playlist_subgenre", "track_id"]].copy()
     result["distance"] = distances[filtered]
     return result
 
