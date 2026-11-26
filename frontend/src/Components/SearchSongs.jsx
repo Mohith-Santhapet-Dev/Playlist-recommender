@@ -1,20 +1,22 @@
 import { useEffect, useState } from 'react'
 
-function SearchComponent() {
+function SearchComponent(props) {
+    const addSongFn = props.addSong
     return(
         <div className='SearchContainer'>
             <h1 className='add-songs-title'> Add Songs </h1>
-            <SearchSongs></SearchSongs>
+            <SearchSongs addSong = {addSongFn} currSongs = {props.currSongs}></SearchSongs>
         </div>
         
     )
 }
 
 
-function SearchSongs() {
+function SearchSongs(props) {
   const [Songtext, setSongText] = useState("")
   const [ArtistText, setArtistText] = useState("")
   const [result, setResult] = useState([])
+  const addSongFn = props.addSong
 
   useEffect(() => {
     if (Songtext.trim() === "") {
@@ -37,6 +39,8 @@ function SearchSongs() {
 
   console.log(Songtext)
   console.log(result)
+
+
   return (
       <>
         <div className='inputs-container'>
@@ -44,7 +48,7 @@ function SearchSongs() {
             <input className = "search-input" placeholder='(optional) enter an artist' value={ArtistText} onChange={(e) => setArtistText(e.target.value)}/>
         </div>
 
-        <Results songs = {result}/>
+        <Results songs = {result} addSong = {addSongFn} currSongs = {props.currSongs}/>
       </>
 
 
@@ -53,10 +57,16 @@ function SearchSongs() {
 }
 
 function Results(props) {
-  //const songs = props.songs.map((song) => song.track_name)
+  const addSongFn = props.addSong
+  const currSongs = props.currSongs 
+  
   return (
     <ul className='result-list'>
-      {props.songs.map((song) => <li className = "result-item" key={song.track_id}> {song.track_name} - {song.track_artist}  <button className='add-song-btn'> Add </button> </li>)}
+      {props.songs.map((song) => 
+        {   const songDetails = `${song.track_name} - ${song.track_artist}`
+            return<li className = "result-item" key={song.track_id}> {songDetails}  
+                    <button className='add-song-btn' onClick={() => addSongFn([...currSongs, song])}> Add </button> 
+               </li>})}
     </ul>
     
   )

@@ -4,12 +4,14 @@ import Playlist from './Components/Playlist'
 
 
 function App() {
+
+  const [playlist, setPlaylist] = useState([])
   return (
     <>
       <Header/>
       <div className='main-container'>
-        <SearchComponent/>
-        <Playlist/>
+        <SearchComponent addSong = {setPlaylist} currSongs = {playlist}/>
+        <Playlist songs = {playlist}/>
       </div>
       
       
