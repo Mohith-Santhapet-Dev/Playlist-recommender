@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import SearchComponent from "./Components/SearchSongs"
 import Playlist from './Components/Playlist'
+import Recommend from './Components/recommend'
 
 
 function App() {
@@ -17,8 +18,11 @@ function App() {
     <>
       <Header/>
       <div className='main-container'>
-        <SearchComponent addSong = {addSong}/>
-        <Playlist songs = {playlist}/>
+        <div className = "create-playlist-container">
+          <SearchComponent addSong = {addSong}/>
+          <Playlist songs = {playlist}/>
+        </div>
+        <Recommend songs = {playlist}/>
       </div>
       
       

@@ -16,8 +16,13 @@ body {
 
 .main-container {
   display: flex;
-  justify-content: space-evenly;
+  flex-direction: column;
   padding: 30px;
+}
+
+.create-playlist-container {
+  display: flex;
+  justify-content: space-evenly;
 }
 
 .SearchContainer {
@@ -102,4 +107,28 @@ body {
 
 .song {
   margin: 10px;
+}
+
+.recommend-button {
+  width: 400px;
+  height: 100px;
+  margin: 20px;
+  align-self: center;
+  background-color: #1ed760;
+  border-style: solid;
+  border-color: #1DB954;
+  border-width: 5px;
+  border-radius: 20px;
+  font-size: 25px;
+  cursor: pointer;
+}
+
+.recommend-button:hover {
+  background-color: #1DB954;
+  transform: scale(1.04);
+}
+
+.recommend-container {
+  display: flex;
+  flex-direction: column;
 }
