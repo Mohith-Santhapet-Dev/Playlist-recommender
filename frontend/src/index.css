@@ -83,7 +83,23 @@ body {
 }
 
 .playlist-container {
-  background-color: #1DB954;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #1E1E1E;
   width: 250px;
 }
 
+.playlist-title {
+  color: white;
+}
+
+.songs-list {
+  list-style: none;
+  color: white;
+  padding: 10px;
+}
+
+.song {
+  margin: 10px;
+}
