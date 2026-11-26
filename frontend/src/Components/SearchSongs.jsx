@@ -37,9 +37,6 @@ function SearchSongs(props) {
     fetchSongs()
   }, [Songtext, ArtistText])
 
-  console.log(Songtext)
-  console.log(result)
-
 
   return (
       <>

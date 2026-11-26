@@ -2,7 +2,6 @@ import { useState } from "react"
 
 
 function Recommend(props) {
-    const [clicked, setClicked] = useState(false)
     const [recommended, setRecommended] = useState([])
     const songs = props.songs
 
@@ -16,14 +15,13 @@ function Recommend(props) {
 
 
     async function recommendButton() {
-        setClicked(true)
         const recommendedSongs = await fetchResults(track_ids, 10)
         setRecommended(recommendedSongs)
     }
     return (
         <div className="recommend-container">
             <button className="recommend-button" onClick={recommendButton}> Recommend Playlist </button>
-            {clicked && <RecommendedResults results= {recommended}/>}
+            <RecommendedResults results= {recommended}/>
             
         </div>
         
