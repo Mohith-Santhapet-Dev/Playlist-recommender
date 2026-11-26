@@ -32,8 +32,9 @@ function RecommendedResults(props) {
     const recommendedSongs = props.results
     return (
         <div className="results-container">
+            <h1 className="recommended-title"> Recommended Playlist </h1>
             <ul className="recommended-songs-list">
-                {recommendedSongs.map(s => <li key={s.track_id}> {s.track_name} </li>)}
+                {recommendedSongs.map(s => <li key={s.track_id} className="recommended-song"> {s.track_name} - {s.track_artist} </li>)}
             </ul>
         </div>
     )
