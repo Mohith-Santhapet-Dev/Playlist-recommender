@@ -5,7 +5,7 @@ function SearchComponent(props) {
     return(
         <div className='SearchContainer'>
             <h1 className='add-songs-title'> Add Songs </h1>
-            <SearchSongs addSong = {addSongFn} currSongs = {props.currSongs}></SearchSongs>
+            <SearchSongs addSong = {addSongFn}></SearchSongs>
         </div>
         
     )
@@ -48,7 +48,7 @@ function SearchSongs(props) {
             <input className = "search-input" placeholder='(optional) enter an artist' value={ArtistText} onChange={(e) => setArtistText(e.target.value)}/>
         </div>
 
-        <Results songs = {result} addSong = {addSongFn} currSongs = {props.currSongs}/>
+        <Results songs = {result} addSong = {addSongFn}/>
       </>
 
 
@@ -58,14 +58,13 @@ function SearchSongs(props) {
 
 function Results(props) {
   const addSongFn = props.addSong
-  const currSongs = props.currSongs 
   
   return (
     <ul className='result-list'>
       {props.songs.map((song) => 
         {   const songDetails = `${song.track_name} - ${song.track_artist}`
             return<li className = "result-item" key={song.track_id}> {songDetails}  
-                    <button className='add-song-btn' onClick={() => addSongFn([...currSongs, song])}> Add </button> 
+                    <button className='add-song-btn' onClick={() => addSongFn(song)}> Add </button> 
                </li>})}
     </ul>
     

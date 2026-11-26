@@ -6,11 +6,18 @@ import Playlist from './Components/Playlist'
 function App() {
 
   const [playlist, setPlaylist] = useState([])
+  function addSong(song) {
+    const inSong = playlist.some(s => s.track_id === song.track_id)
+    if (!inSong) {
+      setPlaylist([...playlist, song])
+    }
+  } 
+
   return (
     <>
       <Header/>
       <div className='main-container'>
-        <SearchComponent addSong = {setPlaylist} currSongs = {playlist}/>
+        <SearchComponent addSong = {addSong}/>
         <Playlist songs = {playlist}/>
       </div>
       
